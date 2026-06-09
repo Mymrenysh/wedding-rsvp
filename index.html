@@ -1,1 +1,566 @@
-<h1>Тест<h1>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Никита & Анастасия</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+background:#e8e6e3;
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+color:#4f4646;
+padding:20px;
+}
+
+.container{
+max-width:560px;
+margin:0 auto;
+}
+
+.hero{
+text-align:center;
+margin-bottom:30px;
+}
+
+.envelope{
+font-size:42px;
+margin-bottom:10px;
+}
+
+.names{
+font-size:34px;
+font-weight:300;
+margin-bottom:16px;
+}
+
+.subtitle{
+line-height:1.7;
+font-size:16px;
+}
+
+.card{
+background:#f6d2df;
+padding:22px;
+border-radius:30px;
+margin-bottom:18px;
+box-shadow:0 4px 10px rgba(0,0,0,.04);
+}
+
+.question{
+font-size:22px;
+margin-bottom:16px;
+font-weight:600;
+}
+
+input[type=text]{
+width:100%;
+padding:14px;
+border:none;
+border-radius:14px;
+font-size:16px;
+background:white;
+outline:none;
+}
+
+.options{
+display:flex;
+flex-direction:column;
+gap:10px;
+}
+
+.option{
+background:white;
+padding:14px 16px;
+border-radius:16px;
+cursor:pointer;
+transition:.2s;
+border:2px solid transparent;
+}
+
+.option:hover{
+transform:translateY(-1px);
+}
+
+.option.active{
+border-color:#e65a97;
+background:#fff6fa;
+}
+
+.option input{
+display:none;
+}
+
+.hidden{
+display:none;
+}
+
+button{
+width:100%;
+border:none;
+padding:18px;
+border-radius:50px;
+font-size:18px;
+cursor:pointer;
+}
+
+.submit-btn{
+background:#e65a97;
+color:white;
+}
+
+.submit-btn:disabled{
+opacity:.5;
+}
+
+.note{
+font-size:14px;
+margin-top:10px;
+opacity:.8;
+}
+
+.success{
+display:none;
+text-align:center;
+padding:40px 20px;
+}
+
+.success h2{
+font-size:34px;
+margin-bottom:15px;
+}
+
+.success p{
+line-height:1.8;
+margin-bottom:25px;
+}
+
+.secondary-btn{
+background:white;
+color:#4f4646;
+margin-top:12px;
+}
+
+.loader{
+display:none;
+text-align:center;
+margin-top:15px;
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<div id="formScreen">
+
+<div class="hero">
+
+<div class="envelope">💌</div>
+
+<div class="names">
+Никита & Анастасия
+</div>
+
+<div class="subtitle">
+С любовью приглашаем Вас
+разделить с нами самый важный день.<br><br>
+
+Пожалуйста, ответьте на несколько вопросов,
+которые помогут нам в организации торжества.
+</div>
+
+</div>
+
+<form id="guestForm">
+
+<div class="card">
+
+<div class="question">
+Фамилия Имя
+</div>
+
+<input
+type="text"
+id="name"
+placeholder="Введите Ваше имя"
+required>
+
+</div>
+
+<div class="card">
+
+<div class="question">
+Сможете ли Вы присутствовать?
+</div>
+
+<div class="options">
+
+<label class="option">
+<input type="radio" name="attendance" value="С удовольствием, да!" required>
+💖 С удовольствием, да!
+</label>
+
+<label class="option">
+<input type="radio" name="attendance" value="К большому сожалению, нет">
+😔 К большому сожалению, нет
+</label>
+
+</div>
+
+</div>
+
+<div id="extraQuestions" class="hidden">
+
+<div class="card">
+
+<div class="question">
+Есть ли пищевые ограничения?
+</div>
+
+<div class="options">
+
+<label class="option">
+<input type="radio" name="foodLimit" value="Нет">
+Нет
+</label>
+
+<label class="option">
+<input type="radio" name="foodLimit" value="Да">
+Да
+</label>
+
+</div>
+
+<div id="foodBlock" class="hidden" style="margin-top:15px;">
+<input
+type="text"
+id="foodText"
+placeholder="Укажите ограничения">
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="question">
+Предпочтение по горячему
+</div>
+
+<div class="options">
+
+<label class="option">
+<input type="radio" name="hotMeal" value="Курица">
+🐔 Курица
+</label>
+
+<label class="option">
+<input type="radio" name="hotMeal" value="Рыба">
+🐟 Рыба
+</label>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="question">
+Будете ли употреблять алкоголь?
+</div>
+
+<div class="options">
+
+<label class="option">
+<input type="radio" name="alcohol" value="Да">
+Да
+</label>
+
+<label class="option">
+<input type="radio" name="alcohol" value="Нет">
+Нет
+</label>
+
+</div>
+
+<div id="alcoholBlock" class="hidden" style="margin-top:15px;">
+<input
+type="text"
+id="alcoholText"
+placeholder="Что бы Вы хотели видеть на столе">
+
+<div class="note">
+Можно указать несколько вариантов
+</div>
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="question">
+Нужен ли трансфер?
+</div>
+
+<div class="options">
+
+<label class="option">
+<input type="radio" name="transfer" value="Нужен в обе стороны">
+🚕 Нужен в обе стороны
+</label>
+
+<label class="option">
+<input type="radio" name="transfer" value="Нужен только туда">
+➡️ Нужен только туда
+</label>
+
+<label class="option">
+<input type="radio" name="transfer" value="Нужен только обратно">
+⬅️ Нужен только обратно
+</label>
+
+<label class="option">
+<input type="radio" name="transfer" value="Не нужен">
+🚶 Не нужен, доберусь самостоятельно
+</label>
+
+</div>
+
+</div>
+
+</div>
+
+<button class="submit-btn" type="submit">
+Отправить анкету
+</button>
+
+<div class="loader" id="loader">
+Отправляем...
+</div>
+
+</form>
+
+</div>
+
+<div id="successScreen" class="success">
+
+<h2>Спасибо ❤️</h2>
+
+<p>
+Ваш ответ успешно отправлен.<br>
+Мы с нетерпением ждём встречи с Вами
+в этот особенный день.
+</p>
+
+<button
+class="submit-btn"
+onclick="resetForm()">
+💌 Заполнить анкету ещё для одного гостя
+</button>
+
+<button
+class="secondary-btn"
+onclick="window.location.href='https://weddingday1109.tilda.ws'">
+🏠 Вернуться на сайт свадьбы
+</button>
+
+</div>
+
+</div>
+
+<script>
+
+function activateCards() {
+
+document.querySelectorAll('.option').forEach(option => {
+
+option.addEventListener('click', () => {
+
+const radio = option.querySelector('input[type="radio"]');
+const group = radio.name;
+
+document
+.querySelectorAll(`input[name="${group}"]`)
+.forEach(item => {
+item.closest('.option').classList.remove('active');
+});
+
+option.classList.add('active');
+
+});
+
+});
+
+}
+
+activateCards();
+
+const attendanceRadios =
+document.querySelectorAll('input[name="attendance"]');
+
+attendanceRadios.forEach(radio => {
+
+radio.addEventListener('change', () => {
+
+if(radio.value === 'С удовольствием, да!'){
+
+document
+.getElementById('extraQuestions')
+.classList.remove('hidden');
+
+}else{
+
+document
+.getElementById('extraQuestions')
+.classList.add('hidden');
+
+}
+
+});
+
+});
+
+document
+.querySelectorAll('input[name="foodLimit"]')
+.forEach(item=>{
+
+item.addEventListener('change',()=>{
+
+document
+.getElementById('foodBlock')
+.classList.toggle(
+'hidden',
+item.value !== 'Да'
+);
+
+});
+
+});
+
+document
+.querySelectorAll('input[name="alcohol"]')
+.forEach(item=>{
+
+item.addEventListener('change',()=>{
+
+document
+.getElementById('alcoholBlock')
+.classList.toggle(
+'hidden',
+item.value !== 'Да'
+);
+
+});
+
+});
+
+document
+.getElementById('guestForm')
+.addEventListener('submit', async (e)=>{
+
+e.preventDefault();
+
+document.getElementById('loader').style.display='block';
+
+const data = {
+
+name:
+document.getElementById('name').value,
+
+attendance:
+document.querySelector('input[name="attendance"]:checked')?.value || '',
+
+foodLimit:
+document.querySelector('input[name="foodLimit"]:checked')?.value || '',
+
+foodText:
+document.getElementById('foodText')?.value || '',
+
+hotMeal:
+document.querySelector('input[name="hotMeal"]:checked')?.value || '',
+
+alcohol:
+document.querySelector('input[name="alcohol"]:checked')?.value || '',
+
+alcoholText:
+document.getElementById('alcoholText')?.value || '',
+
+transfer:
+document.querySelector('input[name="transfer"]:checked')?.value || ''
+
+};
+
+try{
+
+const response = await fetch('/api/send',{
+
+method:'POST',
+
+headers:{
+'Content-Type':'application/json'
+},
+
+body:JSON.stringify(data)
+
+});
+
+if(!response.ok){
+throw new Error();
+}
+
+document.getElementById('formScreen').style.display='none';
+document.getElementById('successScreen').style.display='block';
+
+}catch(e){
+
+alert('Ошибка отправки анкеты. Попробуйте ещё раз.');
+
+}
+
+document.getElementById('loader').style.display='none';
+
+});
+
+function resetForm(){
+
+document.getElementById('guestForm').reset();
+
+document
+.querySelectorAll('.option')
+.forEach(el=>el.classList.remove('active'));
+
+document
+.getElementById('extraQuestions')
+.classList.add('hidden');
+
+document
+.getElementById('foodBlock')
+.classList.add('hidden');
+
+document
+.getElementById('alcoholBlock')
+.classList.add('hidden');
+
+document.getElementById('successScreen').style.display='none';
+document.getElementById('formScreen').style.display='block';
+
+window.scrollTo({
+top:0,
+behavior:'smooth'
+});
+
+}
+
+</script>
+
+</body>
+</html>
