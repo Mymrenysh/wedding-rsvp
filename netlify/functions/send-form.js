@@ -33,8 +33,6 @@ ${data.alcohol || "-"}
 
 ${data.alcoholText ? "🥂 " + data.alcoholText : ""}
 
-🚕 Трансфер:
-${data.transfer || "-"}
 `;
 
     const response = await fetch(
