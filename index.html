@@ -306,38 +306,6 @@ placeholder="Что бы Вы хотели видеть на столе">
 
 </div>
 
-<div class="card">
-
-<div class="question">
-Нужен ли трансфер?
-</div>
-
-<div class="options">
-
-<label class="option">
-<input type="radio" name="transfer" value="Нужен в обе стороны">
-🚕 Нужен в обе стороны
-</label>
-
-<label class="option">
-<input type="radio" name="transfer" value="Нужен только туда">
-➡️ Нужен только туда
-</label>
-
-<label class="option">
-<input type="radio" name="transfer" value="Нужен только обратно">
-⬅️ Нужен только обратно
-</label>
-
-<label class="option">
-<input type="radio" name="transfer" value="Не нужен">
-🚶 Не нужен, доберусь самостоятельно
-</label>
-
-</div>
-
-</div>
-
 </div>
 
 <button class="submit-btn" type="submit">
@@ -494,9 +462,6 @@ document.querySelector('input[name="alcohol"]:checked')?.value || '',
 
 alcoholText:
 document.getElementById('alcoholText')?.value || '',
-
-transfer:
-document.querySelector('input[name="transfer"]:checked')?.value || ''
 
 };
 
